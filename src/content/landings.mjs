@@ -7,9 +7,18 @@ const imgSteps = (first) => [
   '<strong>Convert.</strong> Click “Convert to PDF” — the file downloads straight to your device.'
 ];
 
-function jpgUnder(kb, uses) {
+// Size-specific advice so each "under N KB" page is genuinely different.
+const JPG_PAGES_TIP = {
+  50: 'At 50 KB, use one page per PDF. Crop tightly to the document and photograph it flat in daylight — a single ID card or certificate stays readable.',
+  100: 'At 100 KB, one or two pages give the most readable result.',
+  200: 'At 200 KB, up to three or four pages usually stay readable.',
+  500: 'At 500 KB you have room for roughly six to ten clear pages — enough for a full set of mark sheets or a multi-page form.'
+};
+const JPG_SIBLINGS = [50, 100, 200, 500];
+
+function jpgUnder(kb, uses, alternates) {
   return {
-    path: `/jpg-to-pdf-under-${kb}kb/`, widget: 'image', widgetOpts: { target: String(kb), margin: 0 },
+    path: `/jpg-to-pdf-under-${kb}kb/`, widget: 'image', widgetOpts: { target: String(kb), margin: 0 }, alternates,
     title: `JPG to PDF Under ${kb} KB – Convert & Reduce Size Free | PDFMint`,
     description: `Convert JPG or photos to a PDF under ${kb} KB for online forms. PDFMint automatically shrinks the file to fit. Free, no upload, no watermark.`,
     h1: `JPG to PDF Under ${kb} KB`, crumb: `JPG to PDF under ${kb} KB`,
@@ -19,7 +28,7 @@ function jpgUnder(kb, uses) {
     body: `<h2>Tips for staying under ${kb} KB</h2>
 <ul><li>Crop photos to just the document before adding them — less background means more detail where it matters.</li>
 <li>Take the photo in good light; dark, grainy photos compress badly.</li>
-<li>Put fewer pages in each PDF. ${kb <= 100 ? 'At 100 KB, one or two pages give the most readable result.' : 'At 200 KB, up to three or four pages usually stay readable.'}</li></ul>
+<li>Put fewer pages in each PDF. ${JPG_PAGES_TIP[kb]}</li></ul>
 <p>${uses}</p>
 <p>Already have a PDF that's too big? Use <a href="/compress-pdf-to-${kb}kb/">compress PDF to ${kb} KB</a>.</p>`,
     faqs: [
@@ -27,13 +36,15 @@ function jpgUnder(kb, uses) {
       ['Will the text in my document still be readable?', 'Yes for typical documents and ID cards. The tool keeps the highest quality that fits the limit.'],
       ['Is it free and private?', 'Yes. Everything happens in your browser and nothing is uploaded.']
     ],
-    related: [kb === 100 ? '/jpg-to-pdf-under-200kb/' : '/jpg-to-pdf-under-100kb/', `/compress-pdf-to-${kb}kb/`, '/image-to-pdf/', '/aadhaar-card-to-pdf/']
+    related: [...JPG_SIBLINGS.filter((s) => s !== kb).map((s) => `/jpg-to-pdf-under-${s}kb/`), `/compress-pdf-to-${kb}kb/`, '/image-to-pdf/', '/pan-card-to-pdf/']
   };
 }
 
-function compressTo(kb, label, note) {
+const COMPRESS_SIBLINGS = ['/compress-pdf/', '/compress-pdf-to-50kb/', '/compress-pdf-to-100kb/', '/compress-pdf-to-200kb/', '/compress-pdf-to-300kb/', '/compress-pdf-to-500kb/', '/compress-pdf-to-1mb/'];
+
+function compressTo(kb, label, note, alternates) {
   return {
-    path: `/compress-pdf-to-${label.toLowerCase().replace(' ', '')}/`, widget: 'compress', widgetOpts: { target: String(kb) },
+    path: `/compress-pdf-to-${label.toLowerCase().replace(' ', '')}/`, widget: 'compress', widgetOpts: { target: String(kb) }, alternates,
     title: `Compress PDF to ${label} – Reduce PDF Size Online Free | PDFMint`,
     description: `Reduce your PDF to ${label} or less in one click. Ideal for online forms and email limits. Free, private — the file never leaves your device.`,
     h1: `Compress PDF to ${label}`, crumb: `Compress PDF to ${label}`,
@@ -54,7 +65,7 @@ function compressTo(kb, label, note) {
       ['Will the PDF still be readable?', 'Yes for most documents. Very long PDFs squeezed into a small size lose sharpness, so split them if needed.'],
       ['Is my document uploaded?', 'No. Compression runs entirely in your browser.']
     ],
-    related: ['/compress-pdf/', '/compress-pdf-to-100kb/', '/compress-pdf-to-200kb/', '/compress-pdf-to-500kb/', '/compress-pdf-to-1mb/'].filter((x) => !x.includes(label.toLowerCase().replace(' ', '')))
+    related: COMPRESS_SIBLINGS.filter((x) => !x.endsWith(`-${label.toLowerCase().replace(' ', '')}/`)).concat('/guides/pdf-rejected-by-online-form/')
   };
 }
 
@@ -136,12 +147,70 @@ export const landingPages = [
     faqs: [['Do I need to install an app?', 'No. It works in Chrome, Safari and other mobile browsers. You can optionally “Add to Home screen” to use it like an app.'], ['Can I scan multiple pages?', 'Yes. Tap “Use camera” again for each page; they are added in order.']],
     related: ['/image-to-pdf/', '/jpg-to-pdf-under-200kb/', '/compress-pdf/', '/sign-pdf/']
   },
-  jpgUnder(100, 'A 100 KB limit is common on exam registration, scholarship and recruitment portals for uploading certificates, ID proof and signatures.'),
+  jpgUnder(50, 'A 50 KB limit is the tightest you are likely to meet — some scholarship, admission and recruitment portals use it for ID proof or a single certificate. Keep it to one page and the tool will find the clearest version that fits.'),
+  jpgUnder(100, 'A 100 KB limit is common on exam registration, scholarship and recruitment portals for uploading certificates, ID proof and signatures.', { en: '/jpg-to-pdf-under-100kb/', hi: '/hi/jpg-to-pdf-under-100kb/' }),
   jpgUnder(200, 'A 200 KB limit is common for uploading documents such as mark sheets, caste or income certificates and address proof to online applications.'),
-  compressTo(100, '100 KB', 'Exam, recruitment and government application portals often set a 100 KB limit per document. This is a small budget, so one or two pages give the best quality.'),
+  jpgUnder(500, 'A 500 KB limit is common for multi-page uploads such as a set of semester mark sheets, a filled application form, or experience letters. Text stays sharp enough to read and print.'),
+  compressTo(50, '50 KB', 'A few portals cap uploads at 50 KB per document. That is very small, so it works best for a single page — an ID card, one certificate or a one-page form. Text-only PDFs often fit with the “Light” level, which keeps text selectable; scans need stronger compression.'),
+  compressTo(100, '100 KB', 'Exam, recruitment and government application portals often set a 100 KB limit per document. This is a small budget, so one or two pages give the best quality.', { en: '/compress-pdf-to-100kb/', hi: '/hi/compress-pdf-to-100kb/' }),
   compressTo(200, '200 KB', 'A 200 KB limit is common for certificates and supporting documents. Most single-page and two-page scans fit comfortably with good readability.'),
+  compressTo(300, '300 KB', 'A 300 KB limit sits between the strict exam-portal sizes and the generous job-site ones. It comfortably fits three to five scanned pages, or a longer text document with photos.'),
   compressTo(500, '500 KB', 'Many job portals, banks and insurance sites allow 500 KB per upload — enough for several clearly readable pages.'),
   compressTo(1024, '1 MB', 'A 1 MB limit is typical for resumes, project reports and email-friendly sharing. Most documents fit with almost no visible loss in quality.'),
+  {
+    path: '/pan-card-to-pdf/', widget: 'image', widgetOpts: { target: '200', margin: 10 },
+    title: 'PAN Card to PDF – Convert PAN Card Photo to PDF Free | PDFMint',
+    description: 'Turn a photo or scan of your PAN card into a small, clear PDF for KYC and online forms. Set a size like 100 KB or 200 KB. Free, private — nothing is uploaded.',
+    h1: 'PAN Card to PDF', crumb: 'PAN card to PDF',
+    intro: 'Photograph your PAN card (or select a scan) and get a neat PDF for bank KYC, loan, demat or job applications. Your card never leaves your phone.',
+    steps: [
+      '<strong>Add your PAN card.</strong> Tap “Use camera” and photograph the card flat on a dark surface, or select an existing photo or scan.',
+      '<strong>Check the size limit.</strong> It is preset to 200 KB — change it to 100 KB or 50 KB if your form asks for less.',
+      '<strong>Convert.</strong> Tap “Convert to PDF” and the file is saved to your device.'
+    ],
+    features: [['Your PAN stays private', 'The photo is converted on your device. Nothing is uploaded — important for a financial ID.'], FREE, ['Fits upload limits', 'Pick 50, 100 or 200 KB and the PDF is compressed automatically.'], DEVICES],
+    body: `<h2>Getting a clear PAN card photo</h2>
+<ul><li>Place the card on a plain, dark surface so its edges are easy to see.</li>
+<li>Use daylight and switch off the flash — the card's laminate causes glare.</li>
+<li>Hold the phone straight above the card and fill most of the frame with it.</li>
+<li>Check that the PAN number, name and date of birth are sharp before converting.</li></ul>
+<h2>Need the official e-PAN?</h2>
+<p>If you've lost your card or need the official digital copy, the Income Tax Department lets you download an e-PAN PDF online. This tool is for turning a photo or scan of your physical card into a PDF.</p>
+<h2>Protect your copy</h2>
+<p>Before sharing, consider adding a line such as “For KYC at XYZ only” with <a href="/watermark-pdf/">Watermark PDF</a>. It makes the copy harder to misuse elsewhere. If a form wants your PAN and Aadhaar in one file, convert both and join them with <a href="/merge-pdf/">Merge PDF</a>.</p>`,
+    faqs: [
+      ['Is it safe to convert my PAN card here?', 'Yes. The photo is processed inside your browser and never sent to any server.'],
+      ['Can I put the front and back in one PDF?', 'PAN cards only have details on the front, but if a form asks for both sides, add both photos — each becomes a page.'],
+      ['My form needs the PDF under 100 KB. What do I do?', 'Change “Maximum file size” to 100 KB before converting. A single card fits easily.']
+    ],
+    related: ['/aadhaar-card-to-pdf/', '/jpg-to-pdf-under-100kb/', '/watermark-pdf/', '/merge-pdf/', '/scan-to-pdf/']
+  },
+  {
+    path: '/extract-pages-from-pdf/', widget: 'split',
+    title: 'Extract Pages from PDF – Save Selected Pages Free | PDFMint',
+    description: 'Extract one page or a range of pages from a PDF and save them as a new file. Type pages like 2-5, 8. Free, private, no upload, no watermark.',
+    h1: 'Extract Pages from PDF', crumb: 'Extract PDF pages',
+    intro: 'Need just one page — the signed page of a contract, a single mark sheet, a chapter of a book? Type the page numbers and save them as a new PDF.',
+    steps: [
+      '<strong>Open your PDF.</strong> Select or drop the file; the page count is shown.',
+      '<strong>Type the pages to keep.</strong> For example <code>3</code>, <code>2-5</code> or <code>1, 4, 7-9</code>.',
+      '<strong>Extract.</strong> Click “Split PDF” — the selected pages download as one new PDF.'
+    ],
+    features: [PRIVATE, FREE, ['Pages stay perfect', 'Pages are copied exactly — text stays sharp and searchable.'], ['Your original is untouched', 'A new file is created; the original PDF is never changed.']],
+    body: `<h2>Common reasons to extract pages</h2>
+<ul><li>Send only the signed page of an agreement instead of the whole document.</li>
+<li>Upload a single mark sheet or certificate from a combined scan.</li>
+<li>Share one chapter or a few slides without sending the entire file.</li>
+<li>Remove a cover page or blank pages from a scan (or use <a href="/delete-pdf-pages/">Delete PDF pages</a> to pick visually).</li></ul>
+<h2>Extract vs split</h2>
+<p><strong>Extracting</strong> keeps the pages you choose in one new file. <strong>Splitting</strong> breaks a PDF into several files — choose “Each range as a separate PDF” or “Every page as a separate PDF” in the mode menu above if that's what you need.</p>`,
+    faqs: [
+      ['Can I extract non-consecutive pages?', 'Yes. Separate them with commas, for example 1, 4, 7-9.'],
+      ['Does extracting reduce quality?', 'No. Pages are copied exactly as they are in the original.'],
+      ['Is my PDF uploaded?', 'No. Everything happens in your browser.']
+    ],
+    related: ['/split-pdf/', '/delete-pdf-pages/', '/merge-pdf/', '/organize-pdf/']
+  },
   {
     path: '/pdf-to-png/', widget: 'pdf2img', widgetOpts: { format: 'png' },
     title: 'PDF to PNG – Convert PDF Pages to PNG Images Free | PDFMint',

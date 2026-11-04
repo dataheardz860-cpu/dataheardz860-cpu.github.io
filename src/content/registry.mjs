@@ -24,7 +24,8 @@ export const toolGroups = [
     name: 'Organise & optimise',
     items: [
       { path: '/merge-pdf/', name: 'Merge PDF', ico: 'MRG', desc: 'Combine several PDFs into one file.' },
-      { path: '/split-pdf/', name: 'Split PDF', ico: 'SPL', desc: 'Extract pages or split into many files.' },
+      { path: '/split-pdf/', name: 'Split PDF', ico: 'SPL', desc: 'Split one PDF into many files.' },
+      { path: '/extract-pages-from-pdf/', name: 'Extract PDF pages', ico: 'EXT', desc: 'Save just the pages you need.' },
       { path: '/compress-pdf/', name: 'Compress PDF', ico: 'ZIP', desc: 'Reduce PDF file size, even to a target.' },
       { path: '/organize-pdf/', name: 'Organise PDF', ico: 'ORG', desc: 'Reorder, rotate and delete pages.' },
       { path: '/rotate-pdf/', name: 'Rotate PDF', ico: 'ROT', desc: 'Fix sideways or upside-down pages.' },
@@ -42,14 +43,25 @@ export const toolGroups = [
 ];
 
 export const sizeTools = [
+  ['/jpg-to-pdf-under-50kb/', 'JPG to PDF under 50 KB'],
   ['/jpg-to-pdf-under-100kb/', 'JPG to PDF under 100 KB'],
   ['/jpg-to-pdf-under-200kb/', 'JPG to PDF under 200 KB'],
+  ['/jpg-to-pdf-under-500kb/', 'JPG to PDF under 500 KB'],
+  ['/compress-pdf-to-50kb/', 'Compress PDF to 50 KB'],
   ['/compress-pdf-to-100kb/', 'Compress PDF to 100 KB'],
   ['/compress-pdf-to-200kb/', 'Compress PDF to 200 KB'],
+  ['/compress-pdf-to-300kb/', 'Compress PDF to 300 KB'],
   ['/compress-pdf-to-500kb/', 'Compress PDF to 500 KB'],
   ['/compress-pdf-to-1mb/', 'Compress PDF to 1 MB'],
   ['/aadhaar-card-to-pdf/', 'Aadhaar card to PDF'],
+  ['/pan-card-to-pdf/', 'PAN card to PDF'],
   ['/resume-to-pdf/', 'Resume to PDF']
+];
+
+// Extra Hindi pages (shown on the Hindi home page, not in the top menu).
+export const hiExtra = [
+  ['/hi/jpg-to-pdf-under-100kb/', 'फोटो से 100 KB PDF'],
+  ['/hi/compress-pdf-to-100kb/', 'PDF को 100 KB करें']
 ];
 
 export const hiTools = [

@@ -1,6 +1,39 @@
 // Helpful articles. Real, useful guides build topical authority and earn links.
 export const guides = [
   {
+    path: '/guides/pdf-rejected-by-online-form/', short: 'PDF rejected by a form?',
+    title: 'PDF Not Uploading or Rejected by an Online Form? 9 Fixes | PDFMint',
+    description: 'Online form says your PDF is too large, invalid or not supported? Here are the 9 most common causes and how to fix each one in a minute — free.',
+    h1: 'PDF Rejected by an Online Form? 9 Common Causes and Fixes', published: '2026-11-04', updated: '2026-11-04', minutes: 6,
+    body: `<p>You've filled the whole application, and at the last step the portal says <em>“Invalid file”</em> or <em>“File size exceeds limit”</em>. It happens to everyone. Almost every rejection comes from one of the causes below — work through them in order.</p>
+<h2>1. The file is too big</h2>
+<p>This is the most common reason. Read the exact limit on the form (for example “max 100 KB”) and compress to just under it. Use <a href="/compress-pdf/">Compress PDF</a> and set the target size — there are ready pages for <a href="/compress-pdf-to-50kb/">50 KB</a>, <a href="/compress-pdf-to-100kb/">100 KB</a>, <a href="/compress-pdf-to-200kb/">200 KB</a>, <a href="/compress-pdf-to-300kb/">300 KB</a> and <a href="/compress-pdf-to-500kb/">500 KB</a>. Note that 1 MB is 1,024 KB, and some sites count 1 MB as 1,000 KB — aim a little below the limit.</p>
+<h2>2. The file is too small</h2>
+<p>Some portals also have a <strong>minimum</strong> size (for example “between 20 KB and 100 KB”) to block blank uploads. If you compressed too hard, convert again with a higher setting.</p>
+<h2>3. It's a photo, not a PDF (or the other way round)</h2>
+<p>A file named <code>document.pdf.jpg</code> is still a JPG. Check what the form wants. Photos → PDF: <a href="/image-to-pdf/">Image to PDF</a>. PDF → photo: <a href="/pdf-to-jpg/">PDF to JPG</a>. iPhone HEIC photos are often rejected — convert them with <a href="/heic-to-pdf/">HEIC to PDF</a>.</p>
+<h2>4. The form wants one file, you have several</h2>
+<p>If the portal has a single upload box for “all documents”, combine them in the right order with <a href="/merge-pdf/">Merge PDF</a>. Photos can be combined straight into one PDF with Image to PDF.</p>
+<h2>5. The PDF is password-protected</h2>
+<p>Bank statements and some downloaded documents are locked with a password, and portals can't read them. Open the PDF with its password and use “Print → Save as PDF” to create an unlocked copy, then upload that.</p>
+<h2>6. Pages are sideways or upside down</h2>
+<p>Scans from phones are often rotated. Reviewers may reject unreadable documents later even if the upload works. Fix them with <a href="/rotate-pdf/">Rotate PDF</a>.</p>
+<h2>7. Extra or blank pages</h2>
+<p>Blank backs of scanned pages waste your size budget. Remove them with <a href="/delete-pdf-pages/">Delete PDF pages</a>, or keep only what's needed with <a href="/extract-pages-from-pdf/">Extract pages</a>.</p>
+<h2>8. The file name has odd characters</h2>
+<p>Some older portals fail on names with spaces, brackets, emoji or Hindi characters. Rename the file to something simple like <code>marksheet_10th.pdf</code> — letters, numbers, underscores only.</p>
+<h2>9. It's the browser, not the file</h2>
+<p>If everything above checks out, the portal itself may be struggling. Try another browser (Chrome or Edge on a computer usually works best), clear the page and try again, or upload outside peak hours near the deadline.</p>
+<h2>Quick checklist before you upload</h2>
+<ul><li>Correct type (PDF or JPG, as asked)</li><li>Below the maximum size — and above any minimum</li><li>One file if the form asks for one</li><li>No password</li><li>Pages upright and readable</li><li>Simple file name</li></ul>`,
+    faqs: [
+      ['Why does the form say my 95 KB file is too large for a 100 KB limit?', 'Some systems measure in thousands of bytes rather than 1,024, or add a little overhead. Compress to around 90 KB to be safe.'],
+      ['How do I check a file\'s size on my phone?', 'On Android, open the Files app, long-press the file and tap Info or Details. On iPhone, open the Files app, long-press the file and tap Get Info.'],
+      ['Will compressing make my document unreadable?', 'Not if you compress to the size you need. One- or two-page documents stay clear even at 100 KB.']
+    ],
+    related: ['/compress-pdf/', '/compress-pdf-to-100kb/', '/image-to-pdf/', '/merge-pdf/', '/rotate-pdf/', '/extract-pages-from-pdf/']
+  },
+  {
     path: '/guides/how-to-reduce-pdf-file-size/', short: 'Reduce PDF file size',
     title: 'How to Reduce PDF File Size (Without Losing Quality) – 7 Ways | PDFMint',
     description: 'Seven practical ways to make a PDF smaller for email and upload forms — from quick compression to fixing the cause. Works on phone and PC.',

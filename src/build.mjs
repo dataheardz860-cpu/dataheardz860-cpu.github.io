@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import cfg from './config.mjs';
 import { strings } from './i18n.mjs';
 import { widgets, widgetScripts } from './widgets.mjs';
-import { toolGroups, hiTools, sizeTools } from './content/registry.mjs';
+import { toolGroups, hiTools, sizeTools, hiExtra } from './content/registry.mjs';
 import { toolPages } from './content/tools.mjs';
 import { landingPages } from './content/landings.mjs';
 import { hiPages } from './content/hi.mjs';
@@ -133,6 +133,8 @@ function allToolsByPath() {
   toolGroups.forEach((g) => g.items.forEach((i) => { m[i.path] = i.name; }));
   hiTools.forEach(([h, n]) => { m[h] = n; });
   sizeTools.forEach(([h, n]) => { m[h] = n; });
+  hiExtra.forEach(([h, n]) => { m[h] = n; });
+  guides.forEach((g) => { m[g.path] = g.short; });
   return m;
 }
 const names = allToolsByPath();
@@ -195,7 +197,7 @@ ${g.related ? `<h2>Tools mentioned</h2><ul class="related">${g.related.map((h) =
 
 function plainPage(p) {
   const t = strings[p.lang || 'en'];
-  const body = typeof p.body === 'function' ? p.body({ cfg, t, toolGroups, guides, hiTools }) : p.body;
+  const body = typeof p.body === 'function' ? p.body({ cfg, t, toolGroups, guides, hiTools, hiExtra }) : p.body;
   return shell({ lang: 'en', ...p }, body, p.schema ? p.schema({ D, cfg }) : []);
 }
 

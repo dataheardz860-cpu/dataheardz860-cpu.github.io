@@ -61,7 +61,7 @@ export const widgets = {
   <p class="info" id="info"></p>
   <div class="options">
     <label>${t.level}<select id="level">${opt('light', t.lvLight, o.target ? 'medium' : 'medium')}${opt('medium', t.lvMedium, 'medium')}${opt('strong', t.lvStrong)}${opt('extreme', t.lvExtreme)}</select></label>
-    <label>${t.targetSize}<select id="target">${opt('', t.anySize, o.target || '')}${opt('100', '100 KB', o.target)}${opt('200', '200 KB', o.target)}${opt('300', '300 KB', o.target)}${opt('500', '500 KB', o.target)}${opt('1024', '1 MB', o.target)}${opt('2048', '2 MB', o.target)}</select></label>
+    <label>${t.targetSize}<select id="target">${opt('', t.anySize, o.target || '')}${opt('50', '50 KB', o.target)}${opt('100', '100 KB', o.target)}${opt('200', '200 KB', o.target)}${opt('300', '300 KB', o.target)}${opt('500', '500 KB', o.target)}${opt('1024', '1 MB', o.target)}${opt('2048', '2 MB', o.target)}</select></label>
   </div>
   <div class="actions"><button class="btn" id="go" type="button">${t.compress}</button><button class="btn ghost" id="clear" type="button">${t.another}</button></div>
 </div>${status}`,

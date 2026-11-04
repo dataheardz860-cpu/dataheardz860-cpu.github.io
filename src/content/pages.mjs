@@ -39,9 +39,9 @@ export const plainPages = [
     path: '/hi/', lang: 'hi', alternates: { en: '/', hi: '/hi/' },
     title: 'PDFMint – मुफ़्त PDF टूल: फोटो से PDF, Word से PDF, PDF छोटा करें',
     description: 'मुफ़्त ऑनलाइन PDF टूल जो आपके डिवाइस पर चलते हैं: फोटो और Word को PDF में बदलें, PDF जोड़ें और छोटा करें। कोई अपलोड नहीं, कोई साइन-अप नहीं।',
-    body: ({ hiTools }) => `<section class="hero"><h1>मुफ़्त PDF टूल – तेज़, आसान और सुरक्षित</h1>
+    body: ({ hiTools, hiExtra }) => `<section class="hero"><h1>मुफ़्त PDF टूल – तेज़, आसान और सुरक्षित</h1>
 <p>फोटो और Word फ़ाइल को PDF में बदलें, PDF जोड़ें और छोटा करें। सब कुछ आपके ब्राउज़र में होता है — फ़ाइलें आपके डिवाइस से बाहर नहीं जातीं।</p></section>
-<section class="grid" id="tools">${hiTools.map(([h, n]) => `<a class="card" href="${h}"><div class="ico">PDF</div><h2>${n}</h2></a>`).join('')}</section>
+<section class="grid" id="tools">${hiTools.concat(hiExtra).map(([h, n]) => `<a class="card" href="${h}"><div class="ico">PDF</div><h2>${n}</h2></a>`).join('')}</section>
 <article class="content"><h2>सभी टूल (English)</h2><p>PDF को साइन करना, वॉटरमार्क, पेज नंबर, PDF से JPG और भी कई टूल <a href="/" hreflang="en">English वेबसाइट</a> पर उपलब्ध हैं।</p>
 <h2>PDFMint क्यों?</h2><ul class="features"><li><strong>100% सुरक्षित</strong>फ़ाइलें किसी सर्वर पर अपलोड नहीं होतीं।</li><li><strong>बिल्कुल मुफ़्त</strong>कोई अकाउंट या वॉटरमार्क नहीं।</li><li><strong>ऐप की तरह</strong>ब्राउज़र मेन्यू से “Add to Home screen” करें।</li></ul></article>`
   },
