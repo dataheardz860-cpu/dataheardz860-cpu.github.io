@@ -7,7 +7,7 @@ export default {
 
   // Analytics (leave empty to disable)
   plausibleDomain: '',        // e.g. 'yourdomain.com'  (privacy-friendly, no cookie banner needed)
-  gaMeasurementId: '',        // e.g. 'G-XXXXXXXXXX'   (Google Analytics 4)
+  gaMeasurementId: 'G-RJ7R7SEN8Z',        // e.g. 'G-XXXXXXXXXX'   (Google Analytics 4)
 
   // Google AdSense publisher id, e.g. 'ca-pub-1234567890123456' (empty = no ads)
   adsenseClient: '',
