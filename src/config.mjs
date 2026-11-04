@@ -17,7 +17,7 @@ export default {
   convertApi: '',
 
   // Google Search Console verification code (content of the meta tag), optional
-  googleVerification: '',
+  googleVerification: '8ew3pwXCKYcqJQaAYNsm28CKDbpaqy-Pca4nFcXKrZs',
 
   // Android app (Trusted Web Activity) — fill after building the app, see app/README.md
   android: {
