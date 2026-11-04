@@ -2,7 +2,7 @@
 export default {
   siteName: 'PDFMint',
   // Your real domain, no trailing slash. Used for canonical URLs, sitemap, schema.
-  domain: 'https://dataheardz860-cpu.github.io',
+  domain: 'https://mypdfmint.in',
   email: 'hello@yourdomain.com',
 
   // Analytics (leave empty to disable)
@@ -21,7 +21,7 @@ export default {
 
   // Android app (Trusted Web Activity) — fill after building the app, see app/README.md
   android: {
-    packageName: 'com.yourdomain.pdfmint',
+    packageName: 'in.mypdfmint.app',
     sha256Fingerprint: '' // from Play Console → App integrity → App signing key
   }
 };
