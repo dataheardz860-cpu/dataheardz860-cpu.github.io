@@ -122,7 +122,7 @@ export const widgets = {
   </div>
   <div data-pane="draw"><canvas class="pad" id="pad" aria-label="Signature drawing area"></canvas>
     <div class="bar" style="justify-content:flex-start"><button class="btn ghost small" type="button" id="padClear">Clear drawing</button>
-    <select id="ink" style="width:auto">${opt('#111111', 'Black ink')}${opt('#1a3fb0', 'Blue ink')}</select></div></div>
+    <select id="ink" style="width:auto" aria-label="Ink colour">${opt('#111111', 'Black ink')}${opt('#1a3fb0', 'Blue ink')}</select></div></div>
   <div data-pane="type" class="hidden"><div class="options" style="margin:0">
     <label>Your name<input type="text" id="typed" placeholder="Type your name" maxlength="40"></label>
     <label>Style<select id="font">${opt("'Dancing Script'", 'Flowing')}${opt("'Great Vibes'", 'Elegant')}${opt("'Caveat'", 'Handwritten')}</select></label></div></div>
