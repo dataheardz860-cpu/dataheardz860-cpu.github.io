@@ -37,3 +37,22 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # Tell Bing, Yandex, Seznam, Naver (and the engines they feed: DuckDuckGo, Yahoo, ChatGPT search…)
+  # about every page after each deploy. See https://www.indexnow.org
+  indexnow:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping IndexNow
+        env:
+          HOST: mypdfmint.in
+          KEY: c6020dab7e517a1429adecaa6869e0d1
+        run: |
+          sleep 30
+          urls=$(curl -s "https://$HOST/sitemap.xml" | grep -o '<loc>[^<]*' | sed 's/<loc>//' | jq -R . | jq -s .)
+          body=$(jq -n --arg host "$HOST" --arg key "$KEY" --argjson urls "$urls" \
+            '{host:$host, key:$key, keyLocation:("https://"+$host+"/"+$key+".txt"), urlList:$urls}')
+          echo "Submitting $(echo "$urls" | jq length) URLs"
+          curl -s -o /dev/null -w "IndexNow response: %{http_code}\n" -X POST https://api.indexnow.org/indexnow \
+            -H "Content-Type: application/json; charset=utf-8" -d "$body"

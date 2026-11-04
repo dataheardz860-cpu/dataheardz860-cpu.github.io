@@ -97,6 +97,9 @@ ${alts}
 <meta property="og:url" content="${url}">
 <meta property="og:image" content="${D}/og-image.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="${cfg.siteName} – free PDF tools that run on your device">
+<meta name="twitter:title" content="${esc(p.ogTitle || p.title)}">
+<meta name="twitter:description" content="${esc(p.description)}">
 <meta property="og:locale" content="${p.lang === 'hi' ? 'hi_IN' : 'en_US'}">
 <meta name="twitter:card" content="summary_large_image">
 ${p.scripts && p.scripts.length > 1 ? '<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>' : ''}
