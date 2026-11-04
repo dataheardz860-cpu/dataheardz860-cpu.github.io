@@ -10,7 +10,7 @@ export default {
   gaMeasurementId: 'G-RJ7R7SEN8Z',        // e.g. 'G-XXXXXXXXXX'   (Google Analytics 4)
 
   // Google AdSense publisher id, e.g. 'ca-pub-1234567890123456' (empty = no ads)
-  adsenseClient: '',
+  adsenseClient: 'ca-pub-6110667896545300',
 
   // Optional server for exact-layout Word → PDF (see server/README.md).
   // e.g. 'https://pdfmint-convert.onrender.com'  (empty = browser-only mode)
