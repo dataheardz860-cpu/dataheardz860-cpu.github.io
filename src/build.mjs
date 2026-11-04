@@ -67,6 +67,9 @@ function tracking() {
 
 function shell(p, body, schema = []) {
   const t = strings[p.lang] || strings.en;
+  // Google shows ~60 characters; drop the brand suffix from long titles so the keywords stay visible.
+  const suffix = ` | ${cfg.siteName}`;
+  if (p.title.length > 62 && p.title.endsWith(suffix)) p = { ...p, title: p.title.slice(0, -suffix.length) };
   const url = D + p.path;
   const alts = p.alternates
     ? Object.entries(p.alternates).map(([l, h]) => `<link rel="alternate" hreflang="${l}" href="${D + h}">`).join('\n') +

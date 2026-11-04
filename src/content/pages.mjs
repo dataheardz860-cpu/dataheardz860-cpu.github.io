@@ -8,7 +8,7 @@ const updated = 'November 2026';
 export const plainPages = [
   {
     path: '/', alternates: { en: '/', hi: '/hi/' },
-    title: 'PDFMint – Free PDF Tools: Image to PDF, Word to PDF, Merge, Compress',
+    title: 'PDFMint – Free PDF Tools: JPG & Word to PDF, Merge, Compress',
     description: 'Free online PDF tools that run on your device: convert images and Word to PDF, merge, split, compress, sign and watermark PDFs. No upload, no sign-up.',
     body: ({ toolGroups, guides }) => `<section class="hero"><h1>Free PDF Tools – Fast, Simple &amp; Private</h1>
 <p>Convert, merge, compress and sign PDFs in seconds. Everything runs in your browser, so your files never leave your device.</p></section>
@@ -101,7 +101,7 @@ ${cfg.adsenseClient ? `<h2>Advertising</h2><p>We show ads through Google AdSense
   {
     path: '/terms/',
     title: 'Terms of Use | PDFMint',
-    description: 'The terms for using PDFMint\'s free PDF tools.',
+    description: 'Terms of use for PDFMint\'s free online PDF tools: acceptable use, no-warranty terms, electronic signatures and contact details.',
     body: ({ cfg }) => article(`<h1>Terms of Use</h1>
 <p><em>Last updated: ${updated}</em></p>
 <p>By using ${cfg.siteName} you agree to these terms.</p>
