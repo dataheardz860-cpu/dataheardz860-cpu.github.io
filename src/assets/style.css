@@ -131,7 +131,7 @@ details p{margin:8px 0 0;color:var(--muted)}
 /* Footer */
 .site-footer{border-top:1px solid var(--border);background:var(--surface);margin-top:40px;padding:28px 0;color:var(--muted);font-size:.9rem}
 .foot-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:20px}
-.foot-cols h2{font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text);margin:0 0 8px}
+.foot-cols .foot-title{font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text);margin:0 0 8px}
 .foot-cols ul{list-style:none;margin:0;padding:0}
 .foot-cols li{margin:4px 0}
 .site-footer a{color:var(--muted);text-decoration:none}

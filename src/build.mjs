@@ -45,11 +45,12 @@ function header(p, t) {
 }
 
 function footer(p, t) {
-  const cols = toolGroups.map((g) => `<div><h2>${g.name}</h2><ul>${g.items.map((i) => `<li><a href="${i.path}">${i.name}</a></li>`).join('')}</ul></div>`).join('');
+  // Footer titles are plain text (not headings) so each page's heading outline stays about its own topic.
+  const cols = toolGroups.map((g) => `<div><p class="foot-title">${g.name}</p><ul>${g.items.map((i) => `<li><a href="${i.path}">${i.name}</a></li>`).join('')}</ul></div>`).join('');
   return `<footer class="site-footer"><div class="wrap">
 <div class="foot-cols">${cols}
-<div><h2>${t.guides}</h2><ul>${guides.slice(0, 5).map((g) => `<li><a href="${g.path}">${g.short}</a></li>`).join('')}<li><a href="/guides/">All guides</a></li></ul></div>
-<div><h2>${cfg.siteName}</h2><ul><li><a href="/about/">${t.about}</a></li><li><a href="/contact/">${t.contact}</a></li><li><a href="/privacy/">${t.privacy}</a></li><li><a href="/terms/">${t.terms}</a></li><li><a href="/hi/">हिंदी</a></li></ul></div>
+<div><p class="foot-title">${t.guides}</p><ul>${guides.slice(0, 5).map((g) => `<li><a href="${g.path}">${g.short}</a></li>`).join('')}<li><a href="/guides/">All guides</a></li></ul></div>
+<div><p class="foot-title">${cfg.siteName}</p><ul><li><a href="/about/">${t.about}</a></li><li><a href="/contact/">${t.contact}</a></li><li><a href="/privacy/">${t.privacy}</a></li><li><a href="/terms/">${t.terms}</a></li><li><a href="/hi/">हिंदी</a></li></ul></div>
 </div>
 <p class="copy">© <span data-year>2026</span> ${cfg.siteName}. ${t.footerLine}</p>
 </div></footer>`;

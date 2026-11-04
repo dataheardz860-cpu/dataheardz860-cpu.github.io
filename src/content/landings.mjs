@@ -61,15 +61,40 @@ function compressTo(kb, label, note) {
 export const landingPages = [
   {
     path: '/jpg-to-pdf/', widget: 'image',
-    title: 'JPG to PDF – Convert JPG Images to PDF Free Online | PDFMint',
-    description: 'Convert JPG to PDF free. Merge multiple JPG or JPEG photos into one PDF, reorder pages and pick A4 or Letter. No upload, no watermark, no sign-up.',
+    title: 'JPG to PDF – Convert JPG to PDF Free, No Upload | PDFMint',
+    description: 'Convert JPG to PDF free in seconds. Combine many photos into one PDF, set A4 size and even a max file size like 100 KB. No upload, no watermark, no sign-up.',
     h1: 'JPG to PDF Converter', crumb: 'JPG to PDF',
-    intro: 'Combine one or many JPG and JPEG photos into a single PDF. Reorder them, choose the page size, and download — your photos never leave your device.',
-    steps: imgSteps('<strong>Select your JPG files.</strong> Pick one or many — you can add more later.'),
-    features: [PRIVATE, FREE, ['Original colours', 'JPG photos keep their colours and sharpness.'], DEVICES],
-    body: '<h2>JPG vs JPEG</h2><p>They are the same format — “JPEG” is the full name and “.jpg” is the shorter file extension. Both work here. For PNG screenshots use <a href="/png-to-pdf/">PNG to PDF</a>; for iPhone photos use <a href="/heic-to-pdf/">HEIC to PDF</a>.</p>',
-    faqs: [['Can I convert multiple JPGs into one PDF?', 'Yes. Select all of them at once; each image becomes one page.'], ['How do I keep the PDF small?', 'Set “Maximum file size” — for example to 200 KB — before converting.']],
-    related: ['/jpg-to-pdf-under-100kb/', '/png-to-pdf/', '/pdf-to-jpg/', '/merge-pdf/']
+    intro: 'Combine one or many JPG photos into a single PDF. Reorder pages, pick A4 or Letter, and set a maximum file size for upload forms — your photos never leave your device.',
+    steps: imgSteps('<strong>Select your JPG files.</strong> Pick one or many — you can add more later, or tap “Use camera” on your phone.'),
+    stepsTitle: 'How to convert JPG to PDF',
+    features: [PRIVATE, FREE, ['Set a size limit', 'Choose 100 KB, 200 KB or 1 MB and the PDF is shrunk automatically to fit online forms.'], ['Original colours', 'JPG photos keep their colours and sharpness at “High” quality.'], ['No app needed', 'Works in Chrome, Safari, Edge and Firefox on phone or computer.'], DEVICES],
+    featuresTitle: 'Why convert JPG to PDF with PDFMint?',
+    body: `<h2>JPG to PDF on your phone</h2>
+<p><strong>Android:</strong> open this page in Chrome, tap <em>Select images</em> and choose photos from your gallery (tap and hold to select several), or tap <em>Use camera</em> to photograph pages directly. The PDF is saved to your <em>Downloads</em> folder.</p>
+<p><strong>iPhone:</strong> open this page in Safari and tap <em>Select images → Photo Library</em>. iPhone photos are often HEIC rather than JPG — that's fine, they are converted automatically. The PDF goes to the <em>Files</em> app (Downloads).</p>
+<h2>JPG to PDF on Windows or Mac</h2>
+<p>No software to install: drag JPG files from File Explorer or Finder straight into the box above. Windows can also “Microsoft Print to PDF” and Mac Preview can export to PDF, but neither lets you control the file size or merge many photos as easily.</p>
+<h2>Which settings should I use?</h2>
+<div class="table-wrap"><table>
+<tr><th>You're making…</th><th>Page size</th><th>Margin</th><th>Max file size</th></tr>
+<tr><td>Exam or job application upload</td><td>A4</td><td>Small</td><td>100–200 KB (check the form)</td></tr>
+<tr><td>ID card or certificate copy</td><td>A4</td><td>Small</td><td>200 KB</td></tr>
+<tr><td>Photo album or portfolio</td><td>Same as image</td><td>None</td><td>No limit, “High” quality</td></tr>
+<tr><td>Notes or receipts for printing</td><td>A4 or Letter</td><td>Small</td><td>1 MB</td></tr>
+</table></div>
+<p>Need a strict limit? Use <a href="/jpg-to-pdf-under-100kb/">JPG to PDF under 100 KB</a> or <a href="/jpg-to-pdf-under-200kb/">under 200 KB</a>, where the limit is preset.</p>
+<h2>Tips for a clear, small PDF</h2>
+<ul><li>Crop photos to just the document before adding them.</li><li>Take photos in daylight, holding the phone straight above the page.</li><li>Put pages in order before converting — drag the thumbnails or use the arrows.</li><li>If the PDF is still too big, split it into two files or remove blank pages.</li></ul>
+<h2>JPG vs JPEG</h2><p>They are the same format — “JPEG” is the full name and “.jpg” is the shorter file extension. Both work here. For PNG screenshots use <a href="/png-to-pdf/">PNG to PDF</a>; for iPhone photos use <a href="/heic-to-pdf/">HEIC to PDF</a>. To go the other way, use <a href="/pdf-to-jpg/">PDF to JPG</a>.</p>`,
+    faqs: [
+      ['Can I convert multiple JPGs into one PDF?', 'Yes. Select all of them at once; each image becomes one page, in the order you choose.'],
+      ['How do I make a JPG to PDF under 100 KB?', 'Set “Maximum file size” to 100 KB before clicking Convert. PDFMint lowers the resolution and quality step by step until the PDF fits.'],
+      ['Is it safe to convert ID cards and certificates here?', 'Yes. Conversion happens in your browser and your photos are never uploaded to any server.'],
+      ['Will the PDF have a watermark?', 'No. PDFMint never adds watermarks, and there is no sign-up or limit.'],
+      ['Can I convert JPG to PDF without an app?', 'Yes. It works in any modern mobile or desktop browser — nothing to install.'],
+      ['How many JPGs can I put in one PDF?', 'There is no fixed limit. Dozens of photos work fine; very large batches depend on your device\'s memory.']
+    ],
+    related: ['/jpg-to-pdf-under-100kb/', '/jpg-to-pdf-under-200kb/', '/png-to-pdf/', '/heic-to-pdf/', '/pdf-to-jpg/', '/merge-pdf/', '/compress-pdf/']
   },
   {
     path: '/png-to-pdf/', widget: 'image',
