@@ -3,7 +3,7 @@ export default {
   siteName: 'PDFMint',
   // Your real domain, no trailing slash. Used for canonical URLs, sitemap, schema.
   domain: 'https://mypdfmint.in',
-  email: 'hello@yourdomain.com',
+  email: 'help@mypdfmint.in',
 
   // Analytics (leave empty to disable)
   plausibleDomain: '',        // e.g. 'yourdomain.com'  (privacy-friendly, no cookie banner needed)
